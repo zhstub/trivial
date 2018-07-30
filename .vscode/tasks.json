@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "SingleBuild",
+            "type": "shell",
+            "group": "build",
+            "command": "gcc",
+            "args": [
+                "-D__DEBUG__",
+                "-Wall",
+                "${fileBasename}",
+                "-o", "${fileBasenameNoExtension}.exe",
+                "-ggdb3",
+                "-I\"D:/Program Files/Dev-Cpp/MinGW64/include\"",
+                "-I\"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include\"",
+                "-I\"D:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include\"",
+                "-L\"D:/Program Files/Dev-Cpp/MinGW64/lib\"",
+                "-L\"D:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib\"",
+                "-static-libgcc",
+                "&&", "${fileBasenameNoExtension}.exe"
+            ]
+        },
+        {
+            "label": "Run",
+            "type": "shell",
+            "group": "build",
+            "command": "${fileBasenameNoExtension}.exe",
+            "args": []
+        },
+        {
+            "label": "AllBuild",
+            "type": "shell",
+            "group": "build",
+            "command": "make",
+            "args": ["clean", "all"]
+        }
+    ],
+    "presentation": {
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+    },
+    "problemMatcher": {
+        "owner": "cpp",
+        "fileLocation": [
+            "relative",
+            "${workspaceRoot}"
+        ],
+        "pattern": {
+            "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "severity": 4,
+            "message": 5
+        }
+    }
+}

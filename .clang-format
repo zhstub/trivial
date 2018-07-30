@@ -1,0 +1,127 @@
+---
+Language: Cpp
+
+# 预设5种Style：LLVM, Google, Chromium, Mozilla, Webkit，未指定的选项就用预设的
+#BasedOnStyle: Google
+
+# 开括号（包括圆括号、尖括号、方括号）后的对齐，比如参数过长换行
+# 取值: Align（跟左括号对齐）, DontAlign（按长行换行的缩进）, AlwaysBreak(一行放不下时第一个参数就换行，普通缩进)
+AlignAfterOpenBracket: Align
+
+# 连续赋值时，对齐所有等号
+AlignConsecutiveAssignments: false
+
+# 连续声明时，对齐所有声明的变量名
+AlignConsecutiveDeclarations: false
+
+# 对齐二元和三元表达式的操作数
+AlignOperands: false
+
+# 对齐连续的行尾单行注释
+AlignTrailingComments: false
+
+# 声明或定义一行放不下时，true（所有参数放下一行，普通缩进），false（每个参数一行）
+AllowAllParametersOfDeclarationOnNextLine: true
+
+# 允许短的块放在同一行
+AllowShortBlocksOnASingleLine: true
+
+# 允许短的case标签（包括break）放在同一行
+AllowShortCaseLabelsOnASingleLine: false
+
+# 允许短的函数放在同一行
+# 取值: None, InlineOnly(只定义在类中的，全局的不行), Empty(只合并空函数), Inline(只合并类中的短函数和全局的空函数), All（只要不超过一行的最大字符限制，都合并）
+AllowShortFunctionsOnASingleLine: Inline
+
+# 允许短的if语句在同一行
+AllowShortIfStatementsOnASingleLine: true
+
+# 允许短的循环在同一行
+AllowShortLoopsOnASingleLine: true
+
+# false表示函数实参要么都在同一行，要么都各自一行
+BinPackArguments: true
+
+# false表示所有形参要么都在同一行，要么都各自一行
+BinPackParameters: true
+
+# 当一行写不下时，二元运算符的换行方式
+# None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在任何操作符前换行)
+BreakBeforeBinaryOperators: NonAssignment
+
+# 大括号的换行风格
+# Attach（大括号始终连着上一行，java风格），Linux(除函数、命名空间和类定义，与Attach相同)，Mozilla(除枚举、函数、record定义，与Attach相同)，Stroustrup(除函数定义、catch、else，与Attach相同)，Allman(左大括号总是换行)，GNU(左大括号总是换行，并对控制语句的大括号增加额外的缩进)，WebKit(除了函数，与Attach相同)，Custom（由BraceWrapping决定）
+BreakBeforeBraces: Allman
+
+# 在三元运算符的操作符前换行
+BreakBeforeTernaryOperators: true
+
+# 每行字符的限制，0表示没有限制
+ColumnLimit: 100
+
+# 延续的行的缩进宽度
+ContinuationIndentWidth: 4
+
+# 继承最常用的指针和引用的对齐方式
+DerivePointerAlignment: false
+
+# 关闭格式化
+DisableFormat: false
+
+# 自动检测函数的调用和定义是否被格式为每行一个参数(Experimental)
+ExperimentalAutoDetectBinPacking: false
+
+# 缩进case标签
+IndentCaseLabels: false
+
+# 缩进宽度
+IndentWidth: 4
+
+# 保留在块开始处的空行
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# 连续空行的最大数量
+MaxEmptyLinesToKeep: 2
+
+# 指针和引用的对齐: Left, Right, Middle
+PointerAlignment: Right
+
+# 允许重新排版注释
+ReflowComments: false
+
+# 允许排序#include
+SortIncludes: false
+
+# 在C风格类型转换后添加空格
+SpaceAfterCStyleCast: false
+
+# 在赋值运算符之前添加空格
+SpaceBeforeAssignmentOperators: true
+
+# 开圆括号之前添加一个空格: Never, ControlStatements, Always
+SpaceBeforeParens: ControlStatements
+
+# 在空的圆括号中添加空格
+SpaceInEmptyParentheses: false
+
+# 在尾随的评论前添加的空格数(只适用于//)
+SpacesBeforeTrailingComments: 1
+
+# 在尖括号的<后和>前添加空格
+SpacesInAngles: false
+
+# 在C风格类型转换的括号中添加空格
+SpacesInCStyleCastParentheses: false
+
+# 在圆括号的(后和)前添加空格
+SpacesInParentheses: false
+
+# 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响
+SpacesInSquareBrackets: false
+
+# tab宽度
+TabWidth: 4
+
+# 使用tab字符: Never, ForIndentation, ForContinuationAndIndentation, Always
+UseTab: Never
+...
