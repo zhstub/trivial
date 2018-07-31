@@ -74,6 +74,17 @@ void reverse_word(char *str)
 }
 
 
+// v中值为1的bit个数是奇数还是偶数
+int parity(unsigned int v)
+{
+    v ^= v >> 16;
+    v ^= v >> 8;
+    v ^= v >> 4;
+    v &= 0xf;
+    return (0x6996 >> v) & 1;
+}
+
+
 int main(int argc, const char *argv[])
 {
     dprint(fibonacci(10));
@@ -89,6 +100,19 @@ int main(int argc, const char *argv[])
         reverse_word(str);
 
         printf("%s\n", str);
+    }
+
+    printf("\n");
+    {
+        int val = 0;
+        int t = 1 << 10;
+
+        for (int i = 0; i < t; i++)
+        {
+            val += parity(i);
+        }
+
+        printf("%d\n", val);
     }
 
     return 0;

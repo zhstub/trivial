@@ -2,13 +2,18 @@
 #include <stdlib.h>
 #include <time.h>
 
+
 #ifdef __GNUC__
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-variable"
 #pragma GCC diagnostic ignored "-Wunused-value"
+#pragma GCC diagnostic ignored "-Wincompatible-pointer-types"
+#pragma GCC diagnostic ignored "-Wmultichar"
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 #pragma GCC diagnostic ignored "-Wformat="
 #endif
 
+#define LOG_INFO(s, ...) fprintf(stderr, "[%s:%d] " s "\n", __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define ISUNSIGNED(a) (a >= 0 && ~a >= 0)
 #define ISUNSIGNEDTYPE(type) ((type)0 - 1 > 0)
@@ -35,7 +40,7 @@ char fa1(char p[2][3][5])
     void *p1 = p + 1;
     void *p2 = p;
 
-    printf("fa1: %d\n", p1-p2);
+    printf("fa1: %d\t", p1-p2);
     return 1;
 }
 
@@ -44,7 +49,7 @@ char fa2(char p[][3][5])
     void *p1 = p + 1;
     void *p2 = p;
 
-    printf("fa2: %d\n", p1-p2);
+    printf("fa2: %d\t", p1-p2);
     return 1;
 }
 
@@ -75,8 +80,10 @@ int main(int argc, char *argv[])
     int x = 0, y = 0;
     // int z = x+++++y;
 
+    LOG_INFO("%s %s", "Hello", "world");
+
     time_t biggest = -1;
-    biggest &= ~(1 << (sizeof(time_t)*8 - 1));
+    biggest &= ~(1 << (sizeof(biggest)*8 - 1));
 
     printf("biggest = %s \n", asctime(gmtime(&biggest)));
     printf("biggest = %s \n", ctime(&biggest) );
@@ -107,6 +114,14 @@ int main(int argc, char *argv[])
         dprint(ISSIGNEDTYPE(char));
         dprint(ISSIGNEDTYPE(double));
         dprint(ISSIGNED(c));
+    }
+
+    NEWLINE(printf-format);
+    {
+        printf("%5.2e\n", 9999999);
+        printf("%.f\n", 3.1415926);
+        printf("%0*.*f\n", 5, 2, 3.1415926);
+        printf("%.d\n", 0);
     }
 
     // overflow of printf
@@ -255,6 +270,7 @@ int main(int argc, char *argv[])
         char a[2][3][5] = {99};
         char (*p)[3][5] = a;
         char (*q)[2][3][5] = &a;
+
         fa1(a);
         fa2(a);
         fa3(a);
